@@ -1,15 +1,19 @@
 import React from 'react';
+import Item from './item';
 
 
 
 const List = (props)=>{
         const listElements = props.data.map((item, index) => {
-            return <li className="collection-item" key={item._id}>{item.title}</li>
+            return <Item key={item._id} item={item} index={index} delete={()=> props.delete(index)}/>
         });
 
         return(
                 <ul className="collection">
-                    {listElements}
+                <div className="col s8">
+                {listElements}
+                </div>
+
                 </ul>
         );
     }
