@@ -1,9 +1,11 @@
 import 'materialize-css/dist/css/materialize.min.css'
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import React, {Component} from 'react';
 import axios from 'axios';
 import AddItem from './add_item';
-import List from './list'
+import List from './list';
+import Details from './details';
+import NotFound from './not_found';
 
 
 const BASE_URL = 'http://api.reactprototypes.com';
@@ -23,8 +25,12 @@ class App extends Component {
     render() {
         return (
             <div className="container">
+            <Switch>
                 <Route exact path="/" component={List} />
                 <Route path="/add-item" component={AddItem} />
+                <Route path='/item/:itemId' component={Details} />
+                <Route component={NotFound}/>
+            </Switch>   
             </div>
         );
     }
